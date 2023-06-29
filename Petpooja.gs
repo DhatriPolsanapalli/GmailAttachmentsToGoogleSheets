@@ -22,8 +22,9 @@ function saveXlsxDataToSheets() {
       });
           var spreadsheet = SpreadsheetApp.getActiveSpreadsheet();
           var sheet = spreadsheet.getSheetByName(salesDataSheetName);
-          Logger.log(sheet)
+          
           const sourceValues = getExcelData(file.id)
+          Logger.log(sourceValues)
           // Get the XLSX file as an Excel blob
           
           sheet.getRange(sheet.getLastRow()+1, 1, sourceValues.length, sourceValues[0].length).setValues(sourceValues);
@@ -51,5 +52,5 @@ function getExcelData(tempID) {
 
   var lastRow = sourceSheet.getLastRow();
   var lastColumn = sourceSheet.getLastColumn();
-  return sourceSheet.getRange(lastRow, lastColumn).getValues();
+  return sourceSheet.getRange(1,1,lastRow, lastColumn).getValues();
 }
