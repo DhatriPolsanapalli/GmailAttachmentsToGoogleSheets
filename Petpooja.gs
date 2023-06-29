@@ -1,6 +1,9 @@
 function saveXlsxDataToSheets() {
-  var threads = GmailApp.search('label:<your Label>');
-  var salesDataSheetName = 'Everyday Sales Data'
+
+  var documentProperties = PropertiesService.getDocumentProperties();
+  const label = 'label:' + documentProperties.getProperty(ConfigVars.GMAIL_LABEL);
+  var threads = GmailApp.search(label);
+  var salesDataSheetName = documentProperties.getProperty(ConfigVars.SHEET_NAME);
   for (var i = 0; i < threads.length; i++) {
     var messages = threads[i].getMessages();
 

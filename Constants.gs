@@ -1,0 +1,4 @@
+var ConfigVars={
+  GMAIL_LABEL : 'GMAIL_LABEL',
+  SHEET_NAME : 'SHEET_NAME'
+}
